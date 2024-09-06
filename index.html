@@ -1,22 +1,469 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- remix icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      type="hero/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Huddle landing page with alternating feature blocks</title>
+    <title>
+      Frontend Mentor | Huddle landing page with alternating feature blocks
+    </title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      h1,
+      h2 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        color: hsl(208, 49%, 24%);
+      }
+      p {
+        font-family: "Open Sans", sans-serif;
+        font-weight: 400;
+      }
+      h1,
+      h2,
+      p {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
 
-  Try It Free
+      .intro {
+        background-color: hsl(193, 100%, 96%);
+        background-image: url("./images/bg-hero-desktop.svg");
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 30px 0;
+      }
+
+      header img {
+        width: 300px;
+      }
+
+      header a {
+        color: black;
+        font-size: 1.2rem;
+        text-decoration: none;
+        padding: 10px 50px;
+        border-radius: 20px;
+        background-color: white;
+      }
+
+      .hero {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .hero h2 {
+        font-size: 3.5rem;
+      }
+
+      .hero a {
+        align-self: self-start;
+        color: white;
+        font-size: 0.8rem;
+        text-decoration: none;
+        padding: 10px 40px;
+        border-radius: 20px;
+        font-family: "Open Sans", sans-serif;
+        background-color: hsl(322, 100%, 66%);
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        color: hsl(208, 49%, 24%);
+      }
+
+      .hero_content {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        /* make .hero_content in the middle  */
+      }
+
+      .hero_img {
+        width: 700px;
+      }
+      /* content Css */
+
+      /* content */
+      main {
+        padding: 100px 0;
+      }
+
+      main .content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 30px;
+        margin: 0 auto;
+        background-color: #fff;
+        box-shadow: 0px 0px 10px hsla(210, 40%, 7.8%, 0.15);
+        padding: 50px;
+        padding-left: 100px;
+        border-radius: 12px;
+      }
+
+      main .content:nth-child(even) {
+        flex-direction: row-reverse;
+      }
+
+      main .content:not(:last-child) {
+        margin-bottom: 2rem;
+      }
+
+      main .content_text,
+      main .content_img {
+        flex: 0 1 50%;
+      }
+
+      .content h2 {
+        margin-bottom: 1rem;
+      }
+      .content p {
+        font-size: 1.2rem;
+        color: hsl(208, 11%, 55%);
+      }
+      .content .content_img {
+        max-width: 400px;
+      }
+      /* get_started Css */
+      .get_start {
+        margin: 120px auto 0;
+        background-color: white;
+        padding: 50px;
+        width: 530px;
+        text-align: center;
+        border-radius: 10px;
+        transform: translateY(-50%);
+
+        box-shadow: 0px 0px 10px hsla(210, 40%, 7.8%, 0.15);
+      }
+      .get_start p {
+        padding-bottom: 20px;
+        color: hsl(208, 49%, 24%);
+        font-weight: 700;
+        font-size: 1.5rem;
+      }
+      .get_start .start {
+        align-self: self-start;
+        color: white;
+        font-size: 1rem;
+        text-decoration: none;
+        padding: 10px 40px;
+        border-radius: 20px;
+        background-color: hsl(322, 100%, 66%);
+        font-family: "Open Sans", sans-serif;
+      }
+
+      /* footer Css */
+      .footer {
+        color: hsl(193, 100%, 96%);
+        background-color: hsl(192, 100%, 9%);
+      }
+      .end {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 80px;
+      }
+
+      .first_footer {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+      .footer_img {
+        width: 200px;
+        filter: grayscale(100) invert(100) brightness(100);
+      }
+      .contact {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+      .second_footer,
+      .third_footer {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .second_footer a,
+      .third_footer a {
+        color: hsl(193, 100%, 96%);
+        text-decoration: none;
+      }
+      .fourth_footer {
+        display: flex;
+        gap: 10px;
+      }
+      .icon {
+        border: 1px solid hsl(193, 100%, 96%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+
+        color: white;
+      }
+      .copy_right {
+        display: flex;
+
+        justify-content: flex-end;
+        padding-bottom: 100px;
+      }
+
+      /* mobile */
+
+      @media (max-width: 860px) {
+        .hero {
+          flex-direction: column;
+          gap: 30px;
+          align-self: center;
+        }
+
+        .hero h2 {
+          font-size: 2.5rem;
+        }
+
+        .hero_img {
+          width: 100%;
+        }
+        .hero_content .hero_btn {
+          align-self: center;
+        }
+        header a {
+          padding: 10px 20px;
+        }
+        .hero_title {
+          align-self: center;
+        }
+        header img {
+          width: 150px;
+        }
+        header a {
+          padding: 10px 25px;
+        }
+        main .content {
+          flex-direction: column-reverse;
+        }
+        main .content:nth-child(even) {
+          flex-direction: column-reverse;
+        }
+        main .content_text {
+          text-align: center;
+        }
+        .content .content_img {
+          max-width: 220px;
+        }
+
+        footer .end {
+          flex-direction: column;
+          gap: 30px;
+          padding-bottom: 50px;
+        }
+        .fourth_footer {
+          text-align: center;
+          justify-content: center;
+        }
+        .copy_right {
+          justify-content: center;
+        }
+        .get_start {
+          width: 100%;
+          padding: 20px;
+        }
+        .get_start p {
+          font-size: 1.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="intro">
+      <div class="container">
+        <!-- Start Header -->
+        <header>
+          <img src="./images/logo.svg" alt="" />
+          <a href="">Try it free</a>
+        </header>
+        <!-- End Header -->
+
+        <!-- Start Hero -->
+        <div class="hero">
+          <div class="hero_content">
+            <h1 class="hero_title">
+              Build The Community <br />
+              Your Fans Will Love
+            </h1>
+            <p class="hero_text">
+              Huddle re-imagines the way we build communities. You have <br />
+              a voice, but so does your audience. Create connections with <br />
+              your users as you engage in genuine discussion.
+            </p>
+            <a href="#" class="hero_btn">Get Started For Free</a>
+          </div>
+          <img
+            class="hero_img"
+            src="./images/illustration-mockups.svg"
+            alt=""
+          />
+        </div>
+        <!-- End Hero -->
+      </div>
+    </div>
+    <main>
+      <div class="container">
+        <!-- Content one -->
+        <div class="content">
+          <div class="content_text">
+            <h2>Grow Together</h2>
+            <p>
+              Generate meaningful discussions with your audience and <br />
+              build a strong, loyal community. Think of the insightful <br />
+              conversations you miss out on with a feedback form.
+            </p>
+          </div>
+          <img
+            class="content_img"
+            src="./images/illustration-grow-together.svg"
+            alt=""
+          />
+        </div>
+        <!-- content two -->
+        <div class="content">
+          <div class="content_text">
+            <h2>Flowing Conversations</h2>
+            <p>
+              You wouldn't paginate a conversation in real life, so why do it
+              online? Our threads have just-in-time loading for a more natural
+              flow.
+            </p>
+          </div>
+          <img
+            class="content_img"
+            src="./images/illustration-flowing-conversation.svg"
+            alt=""
+          />
+        </div>
+        <!-- content three -->
+        <div class="content">
+          <div class="content_text">
+            <h2>Your Users</h2>
+            <p>
+              It takes no time at all to integrate Huddle with your app's
+              authentication solution. This means, once signed in to your app,
+              your users can start chatting immediately.
+            </p>
+          </div>
+          <img
+            class="content_img"
+            src="./images/illustration-your-users.svg"
+            alt=""
+          />
+        </div>
+      </div>
+    </main>
+
+    <!-- Start Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="get_start">
+          <p>Ready To Build Your Community?</p>
+          <a class="start" href="">Get Started For Free</a>
+        </div>
+        <div class="end">
+          <div class="first_footer">
+            <img class="footer_img" src="./images/logo.svg" alt="" />
+            <div class="contact">
+              <img src="./images/icon-location.svg"" />
+              <p>
+                Lorem ipsum dolor sit amet, consectetur <br />
+                adipiscing elit, sed do eiusmod tempor <br />
+                incididunt ut labore et dolore magna aliqua
+              </p>
+            </div>
+            <div class="contact">
+              <img src="./images/icon-phone.svg" alt="" />
+              <p>+1-543-123-4567</p>
+            </div>
+            <div class="contact">
+              <img src="./images/icon-email.svg" alt="" />
+              <p>example@huddle.com</p>
+            </div>
+          </div>
+
+          <div class="second_footer">
+            <a href="about us">about us</a>
+            <a href="about us">What we do</a>
+            <a href="about us">FAQ</a>
+          </div>
+          <div class="third_footer">
+            <a href="about us">Career</a>
+            <a href="about us">Blog</a>
+            <a href="about us">Contact Us</a>
+          </div>
+          <div class="fourth_footer">
+            <span class="icon">
+              <i class="ri-facebook-fill"></i>
+            </span>
+            <span class="icon">
+              <i class="ri-instagram-line"></i>
+            </span>
+            <span class="icon">
+              <i class="ri-twitter-fill"></i>
+            </span>
+          </div>
+        </div>
+        <div class="copy_right">
+          Copyright 2018 Huddle. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+  <!-- Try It Free
 
   Build The Community Your Fans Will Love
 
@@ -58,13 +505,12 @@
   Blog
   Contact Us
 
-  &copy; Copyright 2018 Huddle. All rights reserved.
+  &copy; Copyright 2018 Huddle. All rights reserved. -->
 
-  <footer>
+  <!-- <footer>
     <p class="attribution">
       Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
       Coded by <a href="#">Your Name Here</a>.
     </p>
-  </footer>
-</body>
+  </footer> -->
 </html>
